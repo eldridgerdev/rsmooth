@@ -7,23 +7,26 @@ import { withSentryConfig } from "@sentry/nextjs";
 
 /** @type {import("next").NextConfig} */
 const coreConfig = {
-    typescript: {
-        ignoreBuildErrors: true,
-    },
-    eslint: {
-        ignoreDuringBuilds: true,
-    },
+  images: {
+    domains: ['picsum.photos']
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 const config = withSentryConfig(coreConfig, {
-    // For all available options, see:
-    // https://github.com/getsentry/sentry-webpack-plugin#options
+  // For all available options, see:
+  // https://github.com/getsentry/sentry-webpack-plugin#options
 
-    // Suppresses source map uploading logs during build
-    silent: true,
-    org: "me-0i5",
-    project: "javascript-nextjs",
-  },
+  // Suppresses source map uploading logs during build
+  silent: true,
+  org: "me-0i5",
+  project: "javascript-nextjs",
+},
   {
     // For all available options, see:
     // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
