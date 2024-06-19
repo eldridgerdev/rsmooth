@@ -3,6 +3,7 @@ import { db } from "~/server/db";
 import { getPosts } from "~/server/queries";
 import Image from "next/image";
 import Hero from "~/app/_components/hero";
+import "./test.css";
 
 export const dynamic = "force-dynamic";
 const HERO_TITLE = "Ryan's Smoothies";
@@ -11,18 +12,31 @@ const LOCATION_TEXT =
   "Our location changes daily, here's where we are right now!";
 
 export default async function HomePage() {
-  const posts = await getPosts();
+  // const posts = await getPosts();
+  const posts = [
+    { id: 1, name: "one", imageUrl: "/smoothie_bowl2.jpg" },
+    { id: 2, name: "one", imageUrl: "/smoothie_bowl2.jpg" },
+    { id: 3, name: "one", imageUrl: "/smoothie_bowl2.jpg" },
+    { id: 4, name: "one", imageUrl: "/smoothie_bowl2.jpg" },
+  ];
 
   return (
-    //<main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-    <main className="">
+    <main className="grid grid-cols-2 gap-4">
       <section className="bg-primary pb-16">
         {posts.map((post) => (
-          <div key={post.id}>
-            <h2>{post.name}</h2>
+          <div key={post.id} className="flex">
+            <Image
+              src={post.imageUrl} // Make sure the post object has an imageUrl property
+              alt={post.name}
+              width={100} // Adjust as needed
+              height={100}
+              className="mr-4 object-cover" // Add margin for spacing
+            />
+            <div>
+              <h2>{post.name}</h2>
+            </div>
           </div>
         ))}
-        o Hello (App in progress)
       </section>
 
       <section className="bg-gradient text-secondary-foreground">
@@ -46,9 +60,9 @@ export default async function HomePage() {
             src="/smoothie_bowl2.jpg"
           />
         </div>
+
         <div className="w-1/2 flex-col border-2">2 2</div>
       </section>
-      <div className=""></div>
     </main>
   );
 }

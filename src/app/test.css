@@ -1,0 +1,19 @@
+.wave-separator svg {
+  display: block; /* Ensure the SVG takes full width */
+}
+
+.diagonal-separator {
+  height: 50px; /* Adjust height as needed */
+  transform: skewY(-5deg); /* Adjust angle */
+  background: linear-gradient(
+    to bottom right,
+    blue,
+    /* Start color */ red /* End color */
+  ); /* Customize gradient */
+}
+
+.wave-separator {
+  height: 50px;
+  background-image: url("/wave.svg"); /* Replace with your wave SVG */
+  background-repeat: repeat-x;
+}
